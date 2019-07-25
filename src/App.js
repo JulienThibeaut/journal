@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Write from "./Write";
+import Calendar from "./Calendar";
 import { openDB } from "idb";
 import "./App.css";
 
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <Calendar />
       <Write db={db} />
     </div>
   );

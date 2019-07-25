@@ -45,8 +45,6 @@ const Write = ({ db }) => {
     };
   });
 
-  console.log("post", post);
-
   return (
     <div className="write-container">
       <h2 className="write-date">{date}</h2>
