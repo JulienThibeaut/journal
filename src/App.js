@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Write from "./Write";
+import { openDB } from "idb";
+import "./App.css";
 
 function App() {
+  const [db, setDB] = useState(null);
+
+  useEffect(() => {
+    if (!("indexedDB" in window)) {
+      console.warn("IndexedDB not supported");
+      return;
+    }
+
+    const connectToDb = async () => {
+      const dbName = "journal";
+      const storeName = "store1";
+      const version = 1;
+
+      const db = await openDB(dbName, version, {
+        upgrade(db, oldVersion, newVersion, transaction) {
+          db.createObjectStore(storeName);
+        }
+      });
+
+      setDB(db);
+    };
+
+    connectToDb();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Write db={db} />
     </div>
   );
 }
