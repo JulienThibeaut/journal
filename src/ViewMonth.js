@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
-const Calendar = ({ match }) => {
+const ViewMonth = ({ match }) => {
   const arrNbMonth = [...Array(12).keys()];
 
   return (
@@ -27,4 +27,4 @@ const Calendar = ({ match }) => {
   );
 };
 
-export default Calendar;
+export default ViewMonth;

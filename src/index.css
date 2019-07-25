@@ -30,3 +30,11 @@ input {
   outline: none;
   resize: none;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  color: inherit;
+}

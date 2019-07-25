@@ -1,17 +1,14 @@
-.app-container {
-  position: absolute;
+.layout {
   height: 100%;
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .write-container {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  height: 100%;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
   padding-top: 1px;
 }
 
@@ -47,4 +44,31 @@
 
 .mood-content>label {
   cursor: pointer;
+}
+
+.calendar-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.month-container {
+  width: 33.3%;
+  height: 100px;
+  border: 1px solid lightgray;
+}
+
+.day-container {
+  width: 14.2%;
+  height: 100px;
+  border: 1px solid lightgray;
+}
+
+.link-card {
+  display: block;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
