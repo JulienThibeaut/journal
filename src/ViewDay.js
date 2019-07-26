@@ -24,12 +24,19 @@ const ViewDay = ({ match }) => {
         {arrNbDay.map((nbDay, index) => {
           const dayName = dayjs()
             .month(nbMonth)
-            .date(nbDay)
+            .date(nbDay + 1)
             .format("dddd");
+
+          const dayNumber = dayjs()
+            .month(nbMonth)
+            .date(nbDay + 1)
+            .format("D");
+
           return (
             <div className="day-container" key={index}>
               <Link className="link-card" to={`${match.url}/${nbMonth}`}>
-                {dayName}
+                <span>{dayNumber}</span>
+                <span>{dayName}</span>
               </Link>
             </div>
           );
