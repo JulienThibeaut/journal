@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "./Layout";
+import NavCalendar from "./NavCalendar";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
@@ -8,6 +9,7 @@ const ViewMonth = ({ match }) => {
 
   return (
     <Layout>
+      <NavCalendar />
       <div className="calendar-container">
         {arrNbMonth.map((nbMonth, index) => {
           const monthName = dayjs()
