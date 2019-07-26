@@ -1,27 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Layout from "./Layout";
-import dayjs from "dayjs";
+import ViewHome from "./ViewHome";
 import "./App.css";
 
 function App() {
-  return (
-    <Layout className="app-container">
-      <button>
-        <Link
-          className="link-card"
-          to={`calendar/${dayjs().year()}/${dayjs().month()}/${dayjs().date()}`}
-        >
-          Start writing!
-        </Link>
-      </button>
-      <button>
-        <Link className="link-card" to={`calendar/${dayjs().year()}`}>
-          Calendar
-        </Link>
-      </button>
-    </Layout>
-  );
+  return <ViewHome />;
 }
 
 export default App;
