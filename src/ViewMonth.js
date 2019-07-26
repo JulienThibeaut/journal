@@ -16,7 +16,7 @@ const ViewMonth = ({ match }) => {
 
           return (
             <div className="month-container" key={index}>
-              <Link className="link-card" to={`${match.url}/${nbMonth}`}>
+              <Link className="link-card" to={`${match.url}/${nbMonth + 1}`}>
                 {monthName}
               </Link>
             </div>

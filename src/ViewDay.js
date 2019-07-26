@@ -34,7 +34,7 @@ const ViewDay = ({ match }) => {
 
           return (
             <div className="day-container" key={index}>
-              <Link className="link-card" to={`${match.url}/${nbMonth}`}>
+              <Link className="link-card" to={`${match.url}/${nbDay + 1}`}>
                 <span>{dayNumber}</span>
                 <span>{dayName}</span>
               </Link>

@@ -12,7 +12,7 @@ const Write = ({ match }) => {
   const storeName = "store1";
 
   const date = dayjs()
-    .month(month)
+    .month(month - 1)
     .date(day)
     .format("DD/MM/YYYY");
 
