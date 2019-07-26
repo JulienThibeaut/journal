@@ -5,6 +5,20 @@
   margin: 0 auto;
 }
 
+.header-app {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation-app>ul {
+  display: flex;
+}
+
+.navigation-app>ul>li:not(:first-child) {
+  margin-left: 8px;
+}
+
 .write-container {
   display: flex;
   flex-direction: column;

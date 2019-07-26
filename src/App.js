@@ -10,13 +10,13 @@ function App() {
       <button>
         <Link
           className="link-card"
-          to={`calendar/${dayjs().month()}/${dayjs().date()}`}
+          to={`calendar/${dayjs().year()}/${dayjs().month()}/${dayjs().date()}`}
         >
           Start writing!
         </Link>
       </button>
       <button>
-        <Link className="link-card" to={`calendar`}>
+        <Link className="link-card" to={`calendar/${dayjs().year()}`}>
           Calendar
         </Link>
       </button>
