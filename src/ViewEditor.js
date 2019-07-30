@@ -11,7 +11,7 @@ const Write = ({ match }) => {
   const moods = ["😄", "😊", "😌", "🙁", "😞", "😪"];
   const storeName = "store1";
 
-  const date = dayjs()
+  const currentDate = dayjs()
     .month(month - 1)
     .date(day)
     .format("DD/MM/YYYY");
@@ -51,9 +51,9 @@ const Write = ({ match }) => {
     const tx = db.transaction(storeName, "readwrite");
     const store = await tx.objectStore(storeName);
 
-    const data = await store.put(post, date);
+    const data = await store.put(post, currentDate);
 
-    console.log("DATA STORED =>", data);
+    console.warn("DATA STORED =>", data);
 
     await tx.done;
   };
@@ -63,20 +63,26 @@ const Write = ({ match }) => {
       return;
     }
 
-    return async () => {
+    const getWriting = async () => {
       const items = await db
         .transaction(storeName)
         .objectStore(storeName)
-        .getAll();
+        .get(currentDate);
 
-      console.log("items", items);
+      if (!items) {
+        return;
+      }
+
+      setPost(items);
     };
-  });
+
+    getWriting();
+  }, [db, currentDate]);
 
   return (
     <Layout>
       <div className="write-container">
-        <h2 className="write-date">{date}</h2>
+        <h2 className="write-date">{currentDate}</h2>
         <Mood handleMood={updateField} moods={moods} />
         <form className="write-form" onSubmit={handleSubmit}>
           <input
