@@ -22,13 +22,17 @@ export default function Router() {
 }
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { year, month } = rest.computedMatch.params;
+  const { year, month, day } = rest.computedMatch.params;
 
   const isNextYear = Number(year) > dayjs().year();
+  const isNextDay = day > dayjs().date();
+  const isNextMonth = Number(month) > dayjs().month() + 1;
   const isCurrentYear = Number(year) === dayjs().year();
+  const isCurrentMonth = Number(month) === dayjs().month() + 1;
 
   const isDisabledRoute =
-    (dayjs().month() + 1 < Number(month) && isCurrentYear) ||
+    (isNextDay && isCurrentMonth && isCurrentYear) ||
+    (isNextMonth && isCurrentYear) ||
     (!month && isNextYear) ||
     isNextYear;
 
