@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
 const ViewDay = ({ match }) => {
-  const nbMonth = match.params.month;
+  const { year, month } = match.params;
 
   const startMonth = dayjs()
-    .month(nbMonth)
+    .month(month)
     .startOf("month")
     .format("D");
 
   const endMonth = dayjs()
-    .month(nbMonth)
+    .month(month)
     .endOf("month")
     .format("D");
 
@@ -21,16 +21,25 @@ const ViewDay = ({ match }) => {
 
   return (
     <Layout>
-      <NavCalendar />
+      <NavCalendar
+        leftNode={
+          <span>
+            {year} -{" "}
+            {dayjs()
+              .month(month - 1)
+              .format("MMMM")}
+          </span>
+        }
+      />
       <div className="calendar-container">
         {arrNbDay.map((nbDay, index) => {
           const dayName = dayjs()
-            .month(nbMonth)
+            .month(month)
             .date(nbDay + 1)
             .format("dddd");
 
           const dayNumber = dayjs()
-            .month(nbMonth)
+            .month(month)
             .date(nbDay + 1)
             .format("D");
 

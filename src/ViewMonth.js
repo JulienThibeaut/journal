@@ -10,7 +10,7 @@ const ViewMonth = ({ match }) => {
 
   return (
     <Layout>
-      <NavCalendar />
+      <NavCalendar leftNode={<span>{year}</span>} />
       <div className="calendar-container">
         {arrNbMonth.map((nbMonth, index) => {
           const monthName = dayjs()

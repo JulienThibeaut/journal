@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import dayjs from "dayjs";
 
-const NavCalendar = ({ match }) => {
+const NavCalendar = ({ leftNode, match }) => {
   const { year, month } = match.params;
 
   const leftPath = month
@@ -27,18 +27,7 @@ const NavCalendar = ({ match }) => {
 
   return (
     <div className="navigation-calendar">
-      <div>
-        {month ? (
-          <span>
-            {year} -{" "}
-            {dayjs()
-              .month(month - 1)
-              .format("MMMM")}
-          </span>
-        ) : (
-          <span>{year}</span>
-        )}
-      </div>
+      <div>{leftNode}</div>
       <nav className="navigation-content">
         <Link to={leftPath}>left</Link>
         <Link className={isDisabledRight && `disabled-link`} to={rightPath}>
