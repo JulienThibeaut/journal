@@ -19,6 +19,12 @@ const NavCalendar = ({ match }) => {
         .format("M")}`
     : `/calendar/${Number(year) + 1}`;
 
+  const isCurrentYear = dayjs().year() === Number(year);
+
+  const isDisabledRight =
+    (dayjs().month() + 1 === Number(month) && isCurrentYear) ||
+    (!month && isCurrentYear);
+
   return (
     <div className="navigation-calendar">
       <div>
@@ -35,7 +41,9 @@ const NavCalendar = ({ match }) => {
       </div>
       <nav className="navigation-content">
         <Link to={leftPath}>left</Link>
-        <Link to={rightPath}>right</Link>
+        <Link className={isDisabledRight && `disabled-link`} to={rightPath}>
+          right
+        </Link>
       </nav>
     </div>
   );

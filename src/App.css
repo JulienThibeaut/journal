@@ -72,6 +72,17 @@
   border: 1px solid lightgray;
 }
 
+.disabled-card {
+  opacity: 0.5;
+  background-color: rgba(239, 239, 239, 0.4);
+  pointer-events: none;
+}
+
+.disabled-link {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 .day-container {
   width: 14.2%;
   height: 100px;

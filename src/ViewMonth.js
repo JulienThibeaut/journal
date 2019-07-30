@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
 const ViewMonth = ({ match }) => {
+  const { year } = match.params;
   const arrNbMonth = [...Array(12).keys()];
 
   return (
@@ -16,11 +17,27 @@ const ViewMonth = ({ match }) => {
             .month(nbMonth)
             .format("MMMM");
 
+          const isFutureMonth =
+            dayjs().year() === Number(year) &&
+            dayjs().month() + 1 <
+              Number(
+                dayjs()
+                  .month(nbMonth)
+                  .format("M")
+              );
+
           return (
-            <div className="month-container" key={index}>
-              <Link className="link-card" to={`${match.url}/${nbMonth + 1}`}>
-                {monthName}
-              </Link>
+            <div
+              className={`month-container ${isFutureMonth && `disabled-card`}`}
+              key={index}
+            >
+              {!isFutureMonth ? (
+                <Link className="link-card" to={`${match.url}/${nbMonth + 1}`}>
+                  {monthName}
+                </Link>
+              ) : (
+                <span className="link-card">{monthName}</span>
+              )}
             </div>
           );
         })}

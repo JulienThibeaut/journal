@@ -34,12 +34,24 @@ const ViewDay = ({ match }) => {
             .date(nbDay + 1)
             .format("D");
 
+          const isFutureDay = dayjs().date() < dayNumber;
+
           return (
-            <div className="day-container" key={index}>
-              <Link className="link-card" to={`${match.url}/${nbDay + 1}`}>
-                <span>{dayNumber}</span>
-                <span>{dayName}</span>
-              </Link>
+            <div
+              className={`day-container ${isFutureDay && `disabled-card`}`}
+              key={index}
+            >
+              {!isFutureDay ? (
+                <Link className="link-card" to={`${match.url}/${nbDay + 1}`}>
+                  <span>{dayNumber}</span>
+                  <span>{dayName}</span>
+                </Link>
+              ) : (
+                <span className="link-card">
+                  <span>{dayNumber}</span>
+                  <span>{dayName}</span>
+                </span>
+              )}
             </div>
           );
         })}
