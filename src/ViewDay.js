@@ -23,12 +23,12 @@ const ViewDay = ({ match }) => {
     <Layout>
       <NavCalendar
         leftNode={
-          <span>
-            {year} -{" "}
+          <Link to={`/calendar/${dayjs().year()}`}>
+            {year} -
             {dayjs()
               .month(month - 1)
               .format("MMMM")}
-          </span>
+          </Link>
         }
       />
       <div className="calendar-container">

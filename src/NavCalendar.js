@@ -30,7 +30,7 @@ const NavCalendar = ({ leftNode, match }) => {
       <div>{leftNode}</div>
       <nav className="navigation-content">
         <Link to={leftPath}>left</Link>
-        <Link className={isDisabledRight && `disabled-link`} to={rightPath}>
+        <Link className={isDisabledRight ? `disabled-link` : ``} to={rightPath}>
           right
         </Link>
       </nav>
