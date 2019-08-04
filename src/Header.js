@@ -13,7 +13,10 @@ const Header = () => {
       <nav className="navigation-app">
         <ul>
           <li>
-            <Link className="link-card" to={`/calendar/${dayjs().year()}`}>
+            <Link
+              className="link-card"
+              to={`/calendar/${dayjs().year()}/${dayjs().month()}`}
+            >
               Calendar
             </Link>
           </li>
